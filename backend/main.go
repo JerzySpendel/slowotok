@@ -43,7 +43,7 @@ func main() {
 	}
 	fmt.Println(dictionary)
 
-	log.Fatal(http.ListenAndServe(":8000", router))
+	log.Fatal(http.ListenAndServe(":3000", router))
 }
 
 func readWords(path string) ([]string, error) {

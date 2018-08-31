@@ -9,7 +9,7 @@ services:
     volumes:
       - ./backend:/go/src/github.com/skygate/wordspree
     ports:
-      - 3000
+      - 3000:3000
 
   redis:
     image: redis:alpine
