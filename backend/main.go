@@ -19,7 +19,7 @@ func main() {
 	router.HandleFunc("/users/{id}", GetUser).Methods("GET")
 	router.HandleFunc("/board/{level}", GetBoard).Methods("GET")
 
-	dictionary, err := ReadWords("words.txt")
+	dictionary, err := ReadWords("dictionaries/words.txt")
 	if err != nil {
 		fmt.Println(err)
 	}

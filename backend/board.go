@@ -26,7 +26,7 @@ func GetBoard(w http.ResponseWriter, r *http.Request) {
 	board := make([]byte, level)
 	// fmt.Println(board)
 
-	words, err := ReadWords("game-words.txt")
+	words, err := ReadWords("dictionaries/game-words.txt")
 	if err != nil {
 		fmt.Println(err)
 	}
