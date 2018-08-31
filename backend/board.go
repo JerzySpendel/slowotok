@@ -10,8 +10,20 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+	"strings"
 )
 
+
+func Shuffle(src []string) []string {
+ 	final := make([]string, len(src))
+ 	rand.Seed(time.Now().UTC().UnixNano())
+ 	perm := rand.Perm(len(src))
+
+ 	for i, v := range perm {
+ 		final[v] = src[i]
+ 	}
+ 	return final
+ }
 
 func GetBoard(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().Unix())
@@ -23,18 +35,19 @@ func GetBoard(w http.ResponseWriter, r *http.Request) {
 	}
 	level := int(math.Pow(i, 2))
 
-	board := make([]byte, level)
-	// fmt.Println(board)
-
 	words, err := ReadWords("dictionaries/game-words.txt")
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(words)
 
-	for a := 0; a < len(board); a++ {
-		board[a] = byte(65 + rand.Intn(25))
+	var board = ""
+	x := 0
+	for x < level {
+		board += words[rand.Intn(len(words))]
+		x++
 	}
 
-	json.NewEncoder(w).Encode(string(board))
+	asdfboard := strings.Split(board, "")
+
+	json.NewEncoder(w).Encode(Shuffle(asdfboard[:level]))
 }
