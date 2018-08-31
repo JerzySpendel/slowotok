@@ -1,0 +1,20 @@
+version: "3.5"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/prod.Dockerfile
+    restart: always
+    volumes:
+      - ./backend:/go/src/github.com/skygate/wordspree
+    ports:
+      - 3000
+
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    command: redis-server --appendonly yes
+    volumes:
+      - ./data:/data
