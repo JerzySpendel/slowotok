@@ -24,4 +24,4 @@ yarn-error.log*
 #go
 pkg
 api/src
-api/api
+api/main
