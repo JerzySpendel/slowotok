@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"strings"
+	"fmt"
 )
 
 
@@ -48,7 +49,7 @@ func CheckWord(w http.ResponseWriter, req *http.Request) {
 		panic(err)
 	}
 	word := req.Form.Get("word")
-
+	fmt.Println(req.Form)
 	if len(word) == 0 {
 		panic(err)
 	}
