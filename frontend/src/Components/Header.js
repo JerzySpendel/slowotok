@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from '../logo.svg'
 
 export const Header = ({ startGame }) => (
     <header className="header">
-        <img src={logo} alt="logo"/>
-        <button className="btn" onClick={() => startGame()}> Start game </button>
+        <div className="header-wrapper">        
+            <p className="logo">Wordament</p>
+            <button className="btn" onClick={() => startGame()}> Start game </button>
+        </div>
     </header>
 )
