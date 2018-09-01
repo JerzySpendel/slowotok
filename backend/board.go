@@ -1,17 +1,16 @@
 package main
 
-
 import (
 	"encoding/json"
-	"net/http"
-	"github.com/gorilla/mux"
-	"math"
-	"strconv"
 	"fmt"
+	"math"
 	"math/rand"
+	"net/http"
+	"strconv"
 	"time"
-)
 
+	"github.com/gorilla/mux"
+)
 
 func GetBoard(w http.ResponseWriter, r *http.Request) {
 	rand.Seed(time.Now().Unix())
