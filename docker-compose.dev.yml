@@ -6,3 +6,6 @@ services:
     build: 
       context: .
       dockerfile: ./backend/dev.Dockerfile
+
+  frontend:
+    command: bash -c "yarn && yarn start"

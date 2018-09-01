@@ -9,6 +9,15 @@ services:
     volumes:
       - ./backend:/go/src/github.com/skygate/wordspree
     ports:
+      - 8003:8003
+
+  frontend:
+    build: 
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    volumes:
+      - ./frontend:/frontend
+    ports:
       - 3000:3000
 
   redis:
@@ -18,3 +27,12 @@ services:
     command: redis-server --appendonly yes
     volumes:
       - ./data:/data
+
+  nginx:
+    build: ./nginx
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - 8002:8002
+    restart: always

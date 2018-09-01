@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"fmt"
 
 	"github.com/gorilla/mux"
 )
@@ -15,6 +16,7 @@ func main() {
 	users = append(users, User{Id: "3", Username: "ThirdUser", Score: 0})
 
 	router.HandleFunc("/users", GetUsers).Methods("GET")
+	router.HandleFunc("/", getValue).Methods("GET")
 	router.HandleFunc("/users/{id}", GetUser).Methods("GET")
 	router.HandleFunc("/board/{level}", GetBoard).Methods("GET")
 	router.HandleFunc("/check_word/", CheckWord).Methods("POST")
@@ -25,5 +27,9 @@ func main() {
 	// }
 	// fmt.Println(dictionary)
 
-	log.Fatal(http.ListenAndServe(":3000", router))
+	log.Fatal(http.ListenAndServe(":8003", router))
+}
+
+func getValue(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)	
 }

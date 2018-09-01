@@ -9,8 +9,6 @@ import (
 	"strconv"
 	"time"
 	"strings"
-)
-
 	"github.com/gorilla/mux"
 )
 
