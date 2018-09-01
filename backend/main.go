@@ -19,11 +19,5 @@ func main() {
 	router.HandleFunc("/board/{level}", GetBoard).Methods("GET")
 	router.HandleFunc("/check_word/", CheckWord).Methods("POST")
 
-	// dictionary, err := ReadWords("dictionaries/words.txt")
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
-	// fmt.Println(dictionary)
-
 	log.Fatal(http.ListenAndServe(":8003", router))
 }
