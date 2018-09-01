@@ -45,7 +45,7 @@ func GetBoard(w http.ResponseWriter, r *http.Request) {
 		x++
 	}
 
-	asdfboard := strings.Split(board, "")
+	newBoard := strings.Split(board, "")
 
-	json.NewEncoder(w).Encode(Shuffle(asdfboard[:level]))
+	json.NewEncoder(w).Encode(Shuffle(newBoard[:level]))
 }
